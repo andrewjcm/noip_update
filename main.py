@@ -7,7 +7,7 @@ load_dotenv()
 
 
 def get_external_ip():
-    return urllib.request.urlopen(os.getenv("WHOAMI_URL")).read().decode(os.getenv("DECODE_QUAL"))
+    return urllib.request.urlopen(os.getenv("WHOAMI_URL")).read().decode("utf8")
 
 
 def read_noip():
@@ -25,8 +25,7 @@ def write_noip(ip):
 
 def update_noip(new_ip):
     send_update_request(
-        os.getenv("USERNAME"),
-        os.getenv("PASSWORD"),
+        os.getenv("BASE_64_AUTH"),
         os.getenv("HOSTNAME"),
         os.getenv("USER_AGENT"),
         new_ip
